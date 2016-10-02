@@ -1,36 +1,61 @@
 package jp.co.basenet.db.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the Customer database table.
+ * 
+ */
 @Entity
 @Table(name="Customer")
-public class Customer {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(name = "firstname", nullable = false, length = 45)
+@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
+public class Customer implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private long id;
 	private String firstname;
-	@Column(name = "lastname", nullable = false, length = 45)
 	private String lastname;
 
-	protected Customer() {
+	public Customer() {
 	}
 
 	public Customer(String firstname, String lastname) {
+		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("Customer[id=%d, firstName='%s', lastName='%s']",
-				id, firstname, lastname);
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
+	public long getId() {
+		return this.id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	@Column(nullable=false, length=45)
+	public String getFirstname() {
+		return this.firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+
+	@Column(nullable=false, length=45)
+	public String getLastname() {
+		return this.lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 }
