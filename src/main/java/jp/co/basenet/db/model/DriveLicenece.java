@@ -3,14 +3,13 @@ package jp.co.basenet.db.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the DriveLicenece database table.
  * 
  */
 @Entity
-@Table(name="DriveLicenece")
-@NamedQuery(name="DriveLicenece.findAll", query="SELECT d FROM DriveLicenece d")
+@Table(name = "DriveLicenece")
+@NamedQuery(name = "DriveLicenece.findAll", query = "SELECT d FROM DriveLicenece d")
 public class DriveLicenece implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
@@ -24,10 +23,15 @@ public class DriveLicenece implements Serializable {
 	public DriveLicenece() {
 	}
 
+	public DriveLicenece(long id, String cardnumber) {
+		super();
+		this.id = id;
+		this.cardnumber = cardnumber;
+	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true, nullable = false)
 	public long getId() {
 		return this.id;
 	}
@@ -36,8 +40,7 @@ public class DriveLicenece implements Serializable {
 		this.id = id;
 	}
 
-
-	@Column(length=255)
+	@Column(length = 255)
 	public String getAddress() {
 		return this.address;
 	}
@@ -46,8 +49,7 @@ public class DriveLicenece implements Serializable {
 		this.address = address;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getCardnumber() {
 		return this.cardnumber;
 	}
@@ -56,8 +58,7 @@ public class DriveLicenece implements Serializable {
 		this.cardnumber = cardnumber;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getFirstname() {
 		return this.firstname;
 	}
@@ -66,8 +67,7 @@ public class DriveLicenece implements Serializable {
 		this.firstname = firstname;
 	}
 
-
-	@Column(name="firstname_jp", length=45)
+	@Column(name = "firstname_jp", length = 45)
 	public String getFirstnameJp() {
 		return this.firstnameJp;
 	}
@@ -76,8 +76,7 @@ public class DriveLicenece implements Serializable {
 		this.firstnameJp = firstnameJp;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getLastname() {
 		return this.lastname;
 	}
@@ -86,8 +85,7 @@ public class DriveLicenece implements Serializable {
 		this.lastname = lastname;
 	}
 
-
-	@Column(name="lastname_jp", length=45)
+	@Column(name = "lastname_jp", length = 45)
 	public String getLastnameJp() {
 		return this.lastnameJp;
 	}

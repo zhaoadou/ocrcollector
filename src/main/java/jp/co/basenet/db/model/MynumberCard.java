@@ -1,7 +1,14 @@
 package jp.co.basenet.db.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -22,6 +29,11 @@ public class MynumberCard implements Serializable {
 	private String lastnameJp;
 
 	public MynumberCard() {
+	}
+	
+	public MynumberCard(long id) {
+		super();
+		this.id = id;
 	}
 
 

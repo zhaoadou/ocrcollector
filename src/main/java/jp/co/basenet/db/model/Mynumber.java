@@ -23,6 +23,11 @@ public class Mynumber implements Serializable {
 
 	public Mynumber() {
 	}
+	
+	public Mynumber(long id) {
+		super();
+		this.id = id;
+	}
 
 
 	@Id
