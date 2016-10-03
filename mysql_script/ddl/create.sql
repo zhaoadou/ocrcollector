@@ -17,6 +17,17 @@ CREATE TABLE `DriveLicenece` (
   UNIQUE KEY `cardnumber_UNIQUE` (`cardnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `DriveLiceneceImgInfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cardNumber` varchar(45) DEFAULT NULL,
+  `lightingCondition` varchar(2) DEFAULT NULL,
+  `background` varchar(2) DEFAULT NULL,
+  `angle` varchar(2) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `path_UNIQUE` (`path`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `Mynumber` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cardnumber` varchar(45) DEFAULT NULL,
@@ -27,7 +38,7 @@ CREATE TABLE `Mynumber` (
   `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cardnumber_UNIQUE` (`cardnumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `MynumberCard` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -41,23 +52,12 @@ CREATE TABLE `MynumberCard` (
   UNIQUE KEY `cardnumber_UNIQUE` (`cardnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `DriveLiceneceImgInfo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cardNumber` varchar(45) DEFAULT NULL,
-  `lightingCondition` varchar(2) DEFAULT NULL,
-  `background` varchar(2) DEFAULT NULL,
-  `angle` VARCHAR(2) NULL ,
-  `path` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `path_UNIQUE` (`path`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `MynumberCardImgInfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cardNumber` varchar(45) DEFAULT NULL,
   `lightingCondition` varchar(2) DEFAULT NULL,
   `background` varchar(2) DEFAULT NULL,
-  `angle` VARCHAR(2) NULL,
+  `angle` varchar(2) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path_UNIQUE` (`path`)
@@ -68,10 +68,9 @@ CREATE TABLE `MynumberImgInfo` (
   `cardNumber` varchar(45) DEFAULT NULL,
   `lightingCondition` varchar(2) DEFAULT NULL,
   `background` varchar(2) DEFAULT NULL,
-  `angle` VARCHAR(2) NULL,
+  `angle` varchar(2) DEFAULT NULL,
   `frontOrReverseside` varchar(2) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path_UNIQUE` (`path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
