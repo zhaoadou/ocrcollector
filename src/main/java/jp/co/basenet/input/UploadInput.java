@@ -81,6 +81,10 @@ public class UploadInput implements Serializable {
 	}
 	
 	public String toString() {
+		return String.format("%s-%s-%s", brightness,backgroud,angel);
+	}
+	
+	public String toJson() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			return mapper.writeValueAsString(this);

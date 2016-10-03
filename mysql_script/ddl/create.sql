@@ -46,6 +46,7 @@ CREATE TABLE `DriveLiceneceImgInfo` (
   `cardNumber` varchar(45) DEFAULT NULL,
   `lightingCondition` varchar(2) DEFAULT NULL,
   `background` varchar(2) DEFAULT NULL,
+  `angle` VARCHAR(2) NULL ,
   `path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path_UNIQUE` (`path`)
@@ -56,6 +57,7 @@ CREATE TABLE `MynumberCardImgInfo` (
   `cardNumber` varchar(45) DEFAULT NULL,
   `lightingCondition` varchar(2) DEFAULT NULL,
   `background` varchar(2) DEFAULT NULL,
+  `angle` VARCHAR(2) NULL,
   `path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path_UNIQUE` (`path`)
@@ -66,6 +68,7 @@ CREATE TABLE `MynumberImgInfo` (
   `cardNumber` varchar(45) DEFAULT NULL,
   `lightingCondition` varchar(2) DEFAULT NULL,
   `background` varchar(2) DEFAULT NULL,
+  `angle` VARCHAR(2) NULL,
   `frontOrReverseside` varchar(2) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),

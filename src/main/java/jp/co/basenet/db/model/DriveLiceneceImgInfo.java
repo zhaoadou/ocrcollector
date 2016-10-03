@@ -1,31 +1,41 @@
 package jp.co.basenet.db.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 /**
  * The persistent class for the DriveLiceneceImgInfo database table.
  * 
  */
 @Entity
-@Table(name="DriveLiceneceImgInfo")
-@NamedQuery(name="DriveLiceneceImgInfo.findAll", query="SELECT d FROM DriveLiceneceImgInfo d")
+@Table(name = "DriveLiceneceImgInfo")
+@NamedQuery(name = "DriveLiceneceImgInfo.findAll", query = "SELECT d FROM DriveLiceneceImgInfo d")
 public class DriveLiceneceImgInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String background;
 	private String cardNumber;
 	private String lightingCondition;
+	private String background;
+	private String angle;
 	private String path;
 
 	public DriveLiceneceImgInfo() {
 	}
 
+	public DriveLiceneceImgInfo(String cardNumber, String lightingCondition,
+			String background, String angle, String path) {
+		super();
+		this.cardNumber = cardNumber;
+		this.lightingCondition = lightingCondition;
+		this.background = background;
+		this.angle = angle;
+		this.path = path;
+	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true, nullable = false)
 	public long getId() {
 		return this.id;
 	}
@@ -34,8 +44,7 @@ public class DriveLiceneceImgInfo implements Serializable {
 		this.id = id;
 	}
 
-
-	@Column(length=2)
+	@Column(length = 2)
 	public String getBackground() {
 		return this.background;
 	}
@@ -44,8 +53,7 @@ public class DriveLiceneceImgInfo implements Serializable {
 		this.background = background;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getCardNumber() {
 		return this.cardNumber;
 	}
@@ -54,8 +62,7 @@ public class DriveLiceneceImgInfo implements Serializable {
 		this.cardNumber = cardNumber;
 	}
 
-
-	@Column(length=2)
+	@Column(length = 2)
 	public String getLightingCondition() {
 		return this.lightingCondition;
 	}
@@ -64,8 +71,16 @@ public class DriveLiceneceImgInfo implements Serializable {
 		this.lightingCondition = lightingCondition;
 	}
 
+	@Column(length = 2)
+	public String getAngle() {
+		return angle;
+	}
 
-	@Column(length=255)
+	public void setAngle(String angle) {
+		this.angle = angle;
+	}
+
+	@Column(length = 255)
 	public String getPath() {
 		return this.path;
 	}

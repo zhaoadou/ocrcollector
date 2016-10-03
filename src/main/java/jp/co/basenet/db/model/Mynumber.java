@@ -1,16 +1,16 @@
 package jp.co.basenet.db.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 /**
  * The persistent class for the Mynumber database table.
  * 
  */
 @Entity
-@Table(name="Mynumber")
-@NamedQuery(name="Mynumber.findAll", query="SELECT m FROM Mynumber m")
+@Table(name = "Mynumber")
+@NamedQuery(name = "Mynumber.findAll", query = "SELECT m FROM Mynumber m")
 public class Mynumber implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
@@ -23,16 +23,21 @@ public class Mynumber implements Serializable {
 
 	public Mynumber() {
 	}
-	
+
 	public Mynumber(long id) {
 		super();
 		this.id = id;
 	}
 
+	public Mynumber(String cardnumber, String address) {
+		super();
+		this.address = address;
+		this.cardnumber = cardnumber;
+	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true, nullable = false)
 	public long getId() {
 		return this.id;
 	}
@@ -41,8 +46,7 @@ public class Mynumber implements Serializable {
 		this.id = id;
 	}
 
-
-	@Column(length=255)
+	@Column(length = 255)
 	public String getAddress() {
 		return this.address;
 	}
@@ -51,8 +55,7 @@ public class Mynumber implements Serializable {
 		this.address = address;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getCardnumber() {
 		return this.cardnumber;
 	}
@@ -61,8 +64,7 @@ public class Mynumber implements Serializable {
 		this.cardnumber = cardnumber;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getFirstname() {
 		return this.firstname;
 	}
@@ -71,8 +73,7 @@ public class Mynumber implements Serializable {
 		this.firstname = firstname;
 	}
 
-
-	@Column(name="firstname_jp", length=45)
+	@Column(name = "firstname_jp", length = 45)
 	public String getFirstnameJp() {
 		return this.firstnameJp;
 	}
@@ -81,8 +82,7 @@ public class Mynumber implements Serializable {
 		this.firstnameJp = firstnameJp;
 	}
 
-
-	@Column(length=45)
+	@Column(length = 45)
 	public String getLastname() {
 		return this.lastname;
 	}
@@ -91,8 +91,7 @@ public class Mynumber implements Serializable {
 		this.lastname = lastname;
 	}
 
-
-	@Column(name="lastname_jp", length=45)
+	@Column(name = "lastname_jp", length = 45)
 	public String getLastnameJp() {
 		return this.lastnameJp;
 	}

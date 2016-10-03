@@ -14,16 +14,16 @@ import javax.persistence.*;
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String firstname;
-	private String lastname;
+	private String firstName;
+	private String lastName;
 
 	public Customer() {
 	}
 
-	public Customer(String firstname, String lastname) {
+	public Customer(String firstName, String lastName) {
 		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 
@@ -40,22 +40,22 @@ public class Customer implements Serializable {
 
 
 	@Column(nullable=false, length=45)
-	public String getFirstname() {
-		return this.firstname;
+	public String getFirstName() {
+		return this.firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 
 	@Column(nullable=false, length=45)
-	public String getLastname() {
-		return this.lastname;
+	public String getLastName() {
+		return this.lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 }

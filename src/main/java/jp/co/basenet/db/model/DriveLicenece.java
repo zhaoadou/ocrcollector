@@ -23,12 +23,6 @@ public class DriveLicenece implements Serializable {
 	public DriveLicenece() {
 	}
 
-	public DriveLicenece(long id, String cardnumber) {
-		super();
-		this.id = id;
-		this.cardnumber = cardnumber;
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(unique = true, nullable = false)

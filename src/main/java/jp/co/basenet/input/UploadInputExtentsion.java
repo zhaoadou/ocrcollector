@@ -9,13 +9,18 @@ public class UploadInputExtentsion extends UploadInput {
 	/**
 	 * カード正面と反面
 	 */
-	private boolean positive;
+	private String positive;
 
-	public boolean isPositive() {
+	public String getPositive() {
 		return positive;
 	}
 
-	public void setPositive(boolean positive) {
+	public void setPositive(String positive) {
 		this.positive = positive;
 	}
+	
+	public String toString() {
+		return String.format("%s-%s", super.toString(),positive); 
+	}
+
 }

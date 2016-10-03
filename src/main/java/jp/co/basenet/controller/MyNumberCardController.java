@@ -1,53 +1,93 @@
 package jp.co.basenet.controller;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.File;
+import java.io.IOException;
 
 import javax.validation.Valid;
 
+import jp.co.basenet.db.model.MynumberCard;
+import jp.co.basenet.db.model.MynumberCardImgInfo;
+import jp.co.basenet.db.repo.MynumberCardImgInfoRepository;
+import jp.co.basenet.db.repo.MynumberCardRepository;
+import jp.co.basenet.input.UploadInput;
+import jp.co.basenet.model.PostResult;
+import jp.co.basenet.util.Utils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Base64Utils;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import jp.co.basenet.db.model.MynumberCard;
-import jp.co.basenet.input.UploadInput;
-import jp.co.basenet.model.PostResult;
 
 @RestController
 @RequestMapping("/mynumberCard")
 public class MyNumberCardController {
 
+	private static final Logger log = LoggerFactory
+			.getLogger(MyNumberController.class);
 
-	private static AtomicInteger atintpost = new AtomicInteger(0);
+	@Value("${my.mynumbercardpath}")
+	private String myNumberCardPath;
 
-	private static AtomicInteger atintexist = new AtomicInteger(0);
+	@Autowired
+	private MynumberCardRepository repo;
 
-	@GetMapping("/exists/{id}")
+	@Autowired
+	private MynumberCardImgInfoRepository imgRepo;
+
+	@GetMapping("/{id}")
 	public Object greeting(@PathVariable @Valid String id) {
 
-		if (atintexist.incrementAndGet() % 20 == 0) {
-			return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
-		} else {
-			return new MynumberCard(Long.valueOf(id));
+		log.info(String.format("mynumber exists check {%s} fire.", id));
+
+		long result = repo.countByCardnumber(id);
+
+		if (result > 0) {
+			return new ResponseEntity<>("",HttpStatus.OK);
 		}
+
+		return new ResponseEntity<>("", HttpStatus.NO_CONTENT);
 	}
 
-	@PutMapping("/{id}")
+	@PostMapping("/{id}")
 	public Object PostImage(
 			@PathVariable(name = "id", required = true) String id,
-			@RequestBody UploadInput[] parameter) {
+			@RequestBody UploadInput parameter) {
 
-		System.out.println(String.format("id:%s", id));
-		System.out.println(String.format("uploaddata:%s", parameter[0]));
+		log.info(String.format(" post mynumber card {%s} post fire.", id));
 
-		if (atintpost.incrementAndGet() % 10 == 1) {
-			return new ResponseEntity<PostResult>(new PostResult(false, "there is error on server."),HttpStatus.INTERNAL_SERVER_ERROR);
-		} else {
+		try {
+
+			MynumberCard result = repo.findFirstByCardnumber(id);
+
+			if (null == result) {
+				return new ResponseEntity<PostResult>(new PostResult(false, id
+						+ " is not exist."), HttpStatus.BAD_REQUEST);
+
+			}
+
+			String fileName = myNumberCardPath + "/"
+					+ Utils.makeFileName(id, parameter) + ".jpg";
+			byte[] data = Base64Utils.decodeFromString(parameter
+					.getBase64Data());
+			FileCopyUtils.copy(data, new File(fileName));
+
+			imgRepo.save(new MynumberCardImgInfo(id, parameter.getBrightness(),
+					parameter.getBackgroud(), parameter.getAngel(), fileName));
+
 			return new PostResult(true, null);
+		} catch (IOException e) {
+			return new ResponseEntity<PostResult>(new PostResult(false,
+					"there is a error when post data"), HttpStatus.BAD_REQUEST);
 		}
 	}
 

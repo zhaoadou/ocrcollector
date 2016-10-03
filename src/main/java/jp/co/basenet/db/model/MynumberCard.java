@@ -30,11 +30,6 @@ public class MynumberCard implements Serializable {
 
 	public MynumberCard() {
 	}
-	
-	public MynumberCard(long id) {
-		super();
-		this.id = id;
-	}
 
 
 	@Id
