@@ -40,7 +40,7 @@ public class DriveLicenceController {
 
 	@GetMapping("/{id}")
 	public Object greeting(@PathVariable(name = "id", required = true) String id) {
-		log.info(String.format("mynumber exists check {%s} fire.", id));
+		log.info(String.format("drive licence exists check {%s} fire.", id));
 
 		long result = repo.countByCardnumber(id);
 		
