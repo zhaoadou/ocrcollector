@@ -44,7 +44,7 @@ public class MyNumberCardController {
 	private MynumberCardImgInfoRepository imgRepo;
 
 	@GetMapping("/{id}")
-	public Object greeting(@PathVariable @Valid String id) {
+	public Object exists(@PathVariable @Valid String id) {
 
 		log.info(String.format("mynumber exists check {%s} fire.", id));
 
