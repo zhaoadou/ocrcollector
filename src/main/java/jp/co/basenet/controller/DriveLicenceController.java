@@ -56,7 +56,7 @@ public class DriveLicenceController {
 	public Object PostImage(
 			@PathVariable(name = "id", required = true) String id,
 			@RequestBody UploadInput parameter) {
-		log.info(String.format(" post mynumber {%s} post fire.", id));
+		log.info(String.format(" drive licenece {%s} post fire.", id));
 
 		try {
 
