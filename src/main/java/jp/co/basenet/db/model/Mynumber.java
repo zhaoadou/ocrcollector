@@ -1,43 +1,34 @@
 package jp.co.basenet.db.model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
+
 
 /**
  * The persistent class for the Mynumber database table.
  * 
  */
 @Entity
-@Table(name = "Mynumber")
-@NamedQuery(name = "Mynumber.findAll", query = "SELECT m FROM Mynumber m")
+@Table(name="Mynumber")
+@NamedQuery(name="Mynumber.findAll", query="SELECT m FROM Mynumber m")
 public class Mynumber implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private String address;
+	private String birthday;
 	private String cardnumber;
-	private String firstname;
-	private String firstnameJp;
-	private String lastname;
-	private String lastnameJp;
+	private String expirationDate;
+	private String gender;
+	private String nameEn;
+	private String nameJp;
 
 	public Mynumber() {
 	}
 
-	public Mynumber(long id) {
-		super();
-		this.id = id;
-	}
-
-	public Mynumber(String cardnumber, String address) {
-		super();
-		this.address = address;
-		this.cardnumber = cardnumber;
-	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	public long getId() {
 		return this.id;
 	}
@@ -46,7 +37,8 @@ public class Mynumber implements Serializable {
 		this.id = id;
 	}
 
-	@Column(length = 255)
+
+	@Column(length=255)
 	public String getAddress() {
 		return this.address;
 	}
@@ -55,7 +47,18 @@ public class Mynumber implements Serializable {
 		this.address = address;
 	}
 
-	@Column(length = 45)
+
+	@Column(length=45)
+	public String getBirthday() {
+		return this.birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+
+	@Column(length=45)
 	public String getCardnumber() {
 		return this.cardnumber;
 	}
@@ -64,40 +67,44 @@ public class Mynumber implements Serializable {
 		this.cardnumber = cardnumber;
 	}
 
-	@Column(length = 45)
-	public String getFirstname() {
-		return this.firstname;
+
+	@Column(length=45)
+	public String getExpirationDate() {
+		return this.expirationDate;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setExpirationDate(String expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
-	@Column(name = "firstname_jp", length = 45)
-	public String getFirstnameJp() {
-		return this.firstnameJp;
+
+	@Column(length=3)
+	public String getGender() {
+		return this.gender;
 	}
 
-	public void setFirstnameJp(String firstnameJp) {
-		this.firstnameJp = firstnameJp;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	@Column(length = 45)
-	public String getLastname() {
-		return this.lastname;
+
+	@Column(name="name_en", length=45)
+	public String getNameEn() {
+		return this.nameEn;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setNameEn(String nameEn) {
+		this.nameEn = nameEn;
 	}
 
-	@Column(name = "lastname_jp", length = 45)
-	public String getLastnameJp() {
-		return this.lastnameJp;
+
+	@Column(name="name_jp", length=45)
+	public String getNameJp() {
+		return this.nameJp;
 	}
 
-	public void setLastnameJp(String lastnameJp) {
-		this.lastnameJp = lastnameJp;
+	public void setNameJp(String nameJp) {
+		this.nameJp = nameJp;
 	}
 
 }

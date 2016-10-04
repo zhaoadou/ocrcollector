@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import javax.validation.Valid;
 
-import jp.co.basenet.db.model.MynumberCard;
 import jp.co.basenet.db.model.MynumberCardImgInfo;
+import jp.co.basenet.db.model.Mynumbercard;
 import jp.co.basenet.db.repo.MynumberCardImgInfoRepository;
 import jp.co.basenet.db.repo.MynumberCardRepository;
 import jp.co.basenet.input.UploadInput;
@@ -67,7 +67,7 @@ public class MyNumberCardController {
 
 		try {
 
-			MynumberCard result = repo.findFirstByCardnumber(id);
+			Mynumbercard result = repo.findFirstByCardnumber(id);
 
 			if (null == result) {
 				return new ResponseEntity<PostResult>(new PostResult(false, id
@@ -82,7 +82,7 @@ public class MyNumberCardController {
 			FileCopyUtils.copy(data, new File(fileName));
 
 			imgRepo.save(new MynumberCardImgInfo(id, parameter.getBrightness(),
-					parameter.getBackgroud(), parameter.getAngel(), fileName));
+					parameter.getBackgroud(), parameter.getAngle(), fileName));
 
 			return new PostResult(true, null);
 		} catch (IOException e) {

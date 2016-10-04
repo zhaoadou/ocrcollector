@@ -20,7 +20,7 @@ public class UploadInputExtentsion extends UploadInput {
 	}
 	
 	public String toString() {
-		return String.format("%s-%s", super.toString(),positive); 
+		return String.format("%s_%s", super.toString(),positive); 
 	}
 
 }

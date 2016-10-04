@@ -4,40 +4,40 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+
 /**
  * The persistent class for the MynumberCardImgInfo database table.
  * 
  */
 @Entity
-@Table(name = "MynumberCardImgInfo")
-@NamedQuery(name = "MynumberCardImgInfo.findAll", query = "SELECT m FROM MynumberCardImgInfo m")
+@Table(name="MynumberCardImgInfo")
+@NamedQuery(name="MynumberCardImgInfo.findAll", query="SELECT m FROM MynumberCardImgInfo m")
 public class MynumberCardImgInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
+	private String angle;
 	private String background;
 	private String cardNumber;
 	private String lightingCondition;
-	private String angle;
 	private String path;
 
 	public MynumberCardImgInfo() {
 	}
 
-	public MynumberCardImgInfo(String cardNumber, String lightingCondition,
-			String background, String angle, String path) {
-		super();
-		this.cardNumber = cardNumber;
-		this.lightingCondition = lightingCondition;
-		this.background = background;
+
+	public MynumberCardImgInfo(String id, String brightness, String backgroud,
+			String angle, String fileName) {
+		this.cardNumber = id;
+		this.lightingCondition = brightness;
+		this.background = backgroud;
 		this.angle = angle;
-		this.path = path;
+		this.path = fileName;
 	}
 
 
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	public long getId() {
 		return this.id;
 	}
@@ -46,7 +46,18 @@ public class MynumberCardImgInfo implements Serializable {
 		this.id = id;
 	}
 
-	@Column(length = 2)
+
+	@Column(length=2)
+	public String getAngle() {
+		return this.angle;
+	}
+
+	public void setAngle(String angle) {
+		this.angle = angle;
+	}
+
+
+	@Column(length=2)
 	public String getBackground() {
 		return this.background;
 	}
@@ -55,7 +66,8 @@ public class MynumberCardImgInfo implements Serializable {
 		this.background = background;
 	}
 
-	@Column(length = 45)
+
+	@Column(length=45)
 	public String getCardNumber() {
 		return this.cardNumber;
 	}
@@ -64,7 +76,8 @@ public class MynumberCardImgInfo implements Serializable {
 		this.cardNumber = cardNumber;
 	}
 
-	@Column(length = 2)
+
+	@Column(length=2)
 	public String getLightingCondition() {
 		return this.lightingCondition;
 	}
@@ -73,16 +86,8 @@ public class MynumberCardImgInfo implements Serializable {
 		this.lightingCondition = lightingCondition;
 	}
 
-	@Column(length = 2)
-	public String getAngle() {
-		return angle;
-	}
 
-	public void setAngle(String angle) {
-		this.angle = angle;
-	}
-
-	@Column(length = 255)
+	@Column(length=255)
 	public String getPath() {
 		return this.path;
 	}

@@ -76,7 +76,7 @@ public class DriveLicenceController {
 
 			imgRepo.save(new DriveLiceneceImgInfo(id,
 					parameter.getBrightness(), parameter.getBackgroud(),
-					parameter.getAngel(), fileName));
+					parameter.getAngle(), fileName));
 
 			return new PostResult(true, null);
 		} catch (IOException e) {

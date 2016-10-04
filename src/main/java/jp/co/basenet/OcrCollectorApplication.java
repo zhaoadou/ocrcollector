@@ -21,14 +21,8 @@ public class OcrCollectorApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo2(MynumberRepository repository) {
+	public CommandLineRunner demo1(MynumberRepository repository) {
 		return (args) -> {
-
-			//init mynumber data
-//			repository.save(new Mynumber("857025191156","東京都千代田区一ツ橋２丁目２−２−１"));
-//			repository.save(new Mynumber("687167911526","東京都千代田区神田神保町３丁目１７−２８"));
-//			repository.save(new Mynumber("181925532035","東京都千代田区九段南１丁目３−１"));
-//			repository.save(new Mynumber("413826314216"," 東京都千代田区北の丸公園２−４"));
 
 			// fetch all customers
 			log.info("Mynumber found with findAll():");

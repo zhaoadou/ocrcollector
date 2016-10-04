@@ -5,25 +5,24 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the DriveLicenece database table.
+ * The persistent class for the mynumbercard database table.
  * 
  */
 @Entity
-@Table(name="DriveLicenece")
-@NamedQuery(name="DriveLicenece.findAll", query="SELECT d FROM DriveLicenece d")
-public class DriveLicenece implements Serializable {
+@Table(name="mynumbercard")
+@NamedQuery(name="Mynumbercard.findAll", query="SELECT m FROM Mynumbercard m")
+public class Mynumbercard implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private String address;
 	private String birthday;
 	private String cardnumber;
-	private String expireday;
+	private String gender;
 	private String issueday;
 	private String nameEn;
 	private String nameJp;
-	private String no;
 
-	public DriveLicenece() {
+	public Mynumbercard() {
 	}
 
 
@@ -70,12 +69,12 @@ public class DriveLicenece implements Serializable {
 
 
 	@Column(length=45)
-	public String getExpireday() {
-		return this.expireday;
+	public String getGender() {
+		return this.gender;
 	}
 
-	public void setExpireday(String expireday) {
-		this.expireday = expireday;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 
@@ -106,16 +105,6 @@ public class DriveLicenece implements Serializable {
 
 	public void setNameJp(String nameJp) {
 		this.nameJp = nameJp;
-	}
-
-
-	@Column(length=45)
-	public String getNo() {
-		return this.no;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
 	}
 
 }

@@ -81,7 +81,7 @@ public class MyNumberController {
 			FileCopyUtils.copy(data, new File(fileName));
 
 			imgRepo.save(new MynumberImgInfo(id, parameter.getBrightness(),
-					parameter.getBackgroud(), parameter.getAngel(), parameter
+					parameter.getBackgroud(), parameter.getAngle(), parameter
 							.getPositive(), fileName));
 
 			return new PostResult(true, null);
