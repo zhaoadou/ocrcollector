@@ -39,7 +39,7 @@ public class DriveLicenceController {
 	private DriveLiceneceImgInfoRepository imgRepo;
 
 	@GetMapping("/{id}")
-	public Object greeting(@PathVariable(name = "id", required = true) String id) {
+	public Object exists(@PathVariable(name = "id", required = true) String id) {
 		log.info(String.format("drive licence exists check {%s} fire.", id));
 
 		long result = repo.countByCardnumber(id);
