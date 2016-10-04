@@ -75,7 +75,7 @@ public class DriveLicenceController {
 			FileCopyUtils.copy(data, new File(fileName));
 
 			imgRepo.save(new DriveLiceneceImgInfo(id,
-					parameter.getBrightness(), parameter.getBackgroud(),
+					parameter.getBrightness(), parameter.getbackground(),
 					parameter.getAngle(), fileName));
 
 			return new PostResult(true, null);

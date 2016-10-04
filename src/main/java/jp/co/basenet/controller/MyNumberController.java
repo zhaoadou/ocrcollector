@@ -32,7 +32,7 @@ public class MyNumberController {
 	private static final Logger log = LoggerFactory
 			.getLogger(MyNumberController.class);
 
-	@Value("${my.mynumbercardpath}")
+	@Value("${my.mynumberpath}")
 	private String myNumberPath;
 
 	@Autowired
@@ -81,7 +81,7 @@ public class MyNumberController {
 			FileCopyUtils.copy(data, new File(fileName));
 
 			imgRepo.save(new MynumberImgInfo(id, parameter.getBrightness(),
-					parameter.getBackgroud(), parameter.getAngle(), parameter
+					parameter.getbackground(), parameter.getAngle(), parameter
 							.getPositive(), fileName));
 
 			return new PostResult(true, null);

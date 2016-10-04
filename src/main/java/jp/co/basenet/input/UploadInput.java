@@ -20,7 +20,7 @@ public class UploadInput implements Serializable {
 	/**
 	 * 00:白い 01:黒い
 	 */
-	private String backgroud;
+	private String background;
 
 	/**
 	 * 00:ある 01:なし
@@ -45,12 +45,12 @@ public class UploadInput implements Serializable {
 		this.brightness = brightness;
 	}
 
-	public String getBackgroud() {
-		return backgroud;
+	public String getbackground() {
+		return background;
 	}
 
-	public void setBackgroud(String backgroud) {
-		this.backgroud = backgroud;
+	public void setbackground(String background) {
+		this.background = background;
 	}
 
 	public String getMime() {
@@ -78,7 +78,7 @@ public class UploadInput implements Serializable {
 	}
 
 	public String toString() {
-		return String.format("%s_%s_%s", brightness, backgroud, angle);
+		return String.format("%s_%s_%s", brightness, background, angle);
 	}
 
 	public String toJson() {

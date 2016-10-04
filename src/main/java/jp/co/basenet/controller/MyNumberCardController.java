@@ -81,7 +81,7 @@ public class MyNumberCardController {
 			FileCopyUtils.copy(data, new File(fileName));
 
 			imgRepo.save(new MynumberCardImgInfo(id, parameter.getBrightness(),
-					parameter.getBackgroud(), parameter.getAngle(), fileName));
+					parameter.getbackground(), parameter.getAngle(), fileName));
 
 			return new PostResult(true, null);
 		} catch (IOException e) {
