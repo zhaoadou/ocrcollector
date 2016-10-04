@@ -68,7 +68,7 @@ public class MyNumberController {
 
 			long cnt = repo.countByCardnumber(id);
 
-			if (cnt > 0) {
+			if (cnt == 0) {
 				return new ResponseEntity<PostResult>(new PostResult(false, id
 						+ " is not exist."), HttpStatus.BAD_REQUEST);
 

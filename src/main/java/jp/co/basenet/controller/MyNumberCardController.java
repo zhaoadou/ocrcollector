@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.validation.Valid;
 
 import jp.co.basenet.db.model.MynumberCardImgInfo;
-import jp.co.basenet.db.model.Mynumbercard;
 import jp.co.basenet.db.repo.MynumberCardImgInfoRepository;
 import jp.co.basenet.db.repo.MynumberCardRepository;
 import jp.co.basenet.input.UploadInput;
@@ -67,9 +66,9 @@ public class MyNumberCardController {
 
 		try {
 
-			Mynumbercard result = repo.findFirstByCardnumber(id);
+			long cnt = repo.countByCardnumber(id);
 
-			if (null == result) {
+			if (cnt == 0) {
 				return new ResponseEntity<PostResult>(new PostResult(false, id
 						+ " is not exist."), HttpStatus.BAD_REQUEST);
 
