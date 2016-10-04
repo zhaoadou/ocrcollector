@@ -85,6 +85,7 @@ public class MyNumberCardController {
 
 			return new PostResult(true, null);
 		} catch (IOException e) {
+			log.error("mynumbercard post error.",e);
 			return new ResponseEntity<PostResult>(new PostResult(false,
 					"there is a error when post data"), HttpStatus.BAD_REQUEST);
 		}
